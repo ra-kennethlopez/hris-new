@@ -13,49 +13,49 @@ const LoginForm: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <Paper className={classes.paper}>
+            <Paper elevation={3}>
                 <Grid container>
-                    <Grid item xs={6}>
-                        <div className={classes.coverImage}>
+                    <Grid item md={6}>
+                        <Box className={classes.coverImage} display={{xs: 'none', sm: 'none', md: 'block'}}>
                             <img className={classes.coverImg} alt='cover' src='http://clients.rightapps.tech/cotabato/images/acc.png'/>
-                        </div>
+                        </Box>
                     </Grid>
-                    <Grid item xs={12} sm container>
-                        <Grid item xs container direction='column'>
-                            <Grid item xs container justify='center' alignItems='center'>
-                                <Grid item xs>
-                                    <img className={classes.logoImg} alt='logo' src='http://clients.rightapps.tech/cotabato/images/guihulngan.png' />
+                    <Grid item md={6} container>
+                        <Grid item md container direction='column'>
+                            <Grid item md container justify='center' alignItems='center'>
+                                <Grid item md>
+                                    <Box mt={3}>
+                                        <img className={classes.logoImg} alt='logo' src='http://clients.rightapps.tech/cotabato/images/guihulngan.png' />
+                                    </Box>
                                 </Grid>
                             </Grid>
-                            <Grid item xs container direction='column'>
-                                <Grid item xs>
+                            <Grid item md container direction='column'>
+                                <Grid item md>
                                     <Box mt={3}>
                                         <Typography className={classes.centerText} variant='h5'>ACCOUNT LOGIN</Typography>
                                     </Box>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item md>
                                     <Box m={3}>
                                         <form className={classes.form}>
-                                            <Grid item xs={12} container direction='row'>
-                                                <Grid item xs={6}>
-                                                    <Box mr={2}>
-                                                        <TextField className={classes.textField} id='username' label='Username' variant='outlined' />
-                                                    </Box>
+                                            <Grid item container direction='row' spacing={2}>
+                                                <Grid item md={6} sm={6} xs={12}>
+                                                    <TextField className={classes.textField} id='username' label='Username' variant='outlined' />
                                                 </Grid>
-                                                <Grid item xs={6}>
+                                                <Grid item md={6} sm={6} xs={12}>
                                                     <TextField className={classes.textField} id='password' label='Password' variant='outlined' type='password' />
                                                 </Grid>
                                             </Grid>
-                                            <Grid item xs container direction='column'>
-                                                <Grid item xs>
+                                            <Grid item md container direction='column'>
+                                                <Grid item md>
                                                     <Box my={3}>
                                                         <Button className={classes.signInButton} variant='contained' color='primary'>Sign in</Button>
                                                     </Box>
                                                 </Grid>
-                                                <Grid item xs>
+                                                <Grid item md>
                                                     <Typography className={classes.centerText} variant='body2'>
                                                         Forgot {' '}
-                                                        <Link href='#' color='secondary'>Username/Password</Link>
+                                                        <Link underline='none' href='#' color='secondary'>Username/Password</Link>
                                                     </Typography>
                                                 </Grid>
                                             </Grid>
@@ -75,10 +75,6 @@ const useStyles = makeStyles(() =>
     createStyles({
         root: {
             flexGrow: 1
-        },
-        paper: {
-            margin: 'auto',
-            maxWidth: 1170
         },
         coverImage: {
             width: '100%',
