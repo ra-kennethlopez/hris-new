@@ -7,12 +7,15 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import {Props} from "./types";
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<Props> = ({className}) => {
     const classes = useStyles();
+    const propClass = className ? className : '';
+    const root = classes.root + ' ' + propClass;
 
     return (
-        <div className={classes.root}>
+        <div className={root}>
             <Paper elevation={3}>
                 <Grid container>
                     <Grid item md={6}>
@@ -24,42 +27,38 @@ const LoginForm: React.FC = () => {
                         <Grid item md container direction='column'>
                             <Grid item md container justify='center' alignItems='center'>
                                 <Grid item md>
-                                    <Box mt={3}>
+                                    <Box m={3}>
                                         <img className={classes.logoImg} alt='logo' src='http://clients.rightapps.tech/cotabato/images/guihulngan.png' />
                                     </Box>
                                 </Grid>
                             </Grid>
                             <Grid item md container direction='column'>
                                 <Grid item md>
-                                    <Box mt={3}>
-                                        <Typography className={classes.centerText} variant='h5'>ACCOUNT LOGIN</Typography>
-                                    </Box>
+                                    <Typography className={classes.centerText} variant='h5'>ACCOUNT LOGIN</Typography>
                                 </Grid>
                                 <Grid item md>
                                     <Box m={3}>
-                                        <form className={classes.form}>
-                                            <Grid item container direction='row' spacing={2}>
-                                                <Grid item md={6} sm={6} xs={12}>
-                                                    <TextField className={classes.textField} id='username' label='Username' variant='outlined' />
-                                                </Grid>
-                                                <Grid item md={6} sm={6} xs={12}>
-                                                    <TextField className={classes.textField} id='password' label='Password' variant='outlined' type='password' />
-                                                </Grid>
+                                        <Grid item container direction='row' spacing={2}>
+                                            <Grid item md={6} sm={6} xs={12}>
+                                                <TextField className={classes.textField} id='username' label='Username' variant='outlined' />
                                             </Grid>
-                                            <Grid item md container direction='column'>
-                                                <Grid item md>
-                                                    <Box my={3}>
-                                                        <Button className={classes.signInButton} variant='contained' color='primary'>Sign in</Button>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item md>
-                                                    <Typography className={classes.centerText} variant='body2'>
-                                                        Forgot {' '}
-                                                        <Link underline='none' href='#' color='secondary'>Username/Password</Link>
-                                                    </Typography>
-                                                </Grid>
+                                            <Grid item md={6} sm={6} xs={12}>
+                                                <TextField className={classes.textField} id='password' label='Password' variant='outlined' type='password' />
                                             </Grid>
-                                        </form>
+                                        </Grid>
+                                        <Grid item md container direction='column'>
+                                            <Grid item md>
+                                                <Box my={3}>
+                                                    <Button className={classes.signInButton} variant='contained' color='primary'>Sign in</Button>
+                                                </Box>
+                                            </Grid>
+                                            <Grid item md>
+                                                <Typography className={classes.centerText} variant='body2'>
+                                                    Forgot {' '}
+                                                    <Link underline='none' href='#' color='secondary'>Username/Password</Link>
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
                                     </Box>
                                 </Grid>
                             </Grid>
@@ -74,7 +73,7 @@ const LoginForm: React.FC = () => {
 const useStyles = makeStyles(() =>
     createStyles({
         root: {
-            flexGrow: 1
+            flexGrow: 1,
         },
         coverImage: {
             width: '100%',

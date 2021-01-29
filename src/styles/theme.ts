@@ -20,7 +20,7 @@ export default createMuiTheme({
             main: secondaryMain,
             light: secondaryLight,
             dark: secondaryDark
-        }
+        },
     },
     overrides: {
         MuiLink: {
