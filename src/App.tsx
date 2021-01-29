@@ -1,10 +1,16 @@
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import React from 'react';
 import './App.scss';
 import LoginForm from "./components/LoginForm";
+import {AppTheme} from "./styles";
 
 function App() {
   return (
-    <LoginForm />
+      <>
+        <ThemeProvider theme={AppTheme}>
+           <LoginForm />
+        </ThemeProvider>
+      </>
   );
 }
 
