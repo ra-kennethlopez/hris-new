@@ -1,9 +1,19 @@
-import React from "react";
+import React, {useRef} from "react";
+import {useStyles} from "./styles";
+import Grid from "@material-ui/core/Grid";
+import { TextFieldProps } from "@material-ui/core/TextField";
 import LoginForm from "../../components/LoginForm";
-import {createStyles, Grid, makeStyles, Theme} from "@material-ui/core";
 
 const Login: React.FC = () => {
     const classes = useStyles();
+    const usernameRef = useRef<TextFieldProps>(null);
+    const passwordRef = useRef<TextFieldProps>(null);
+
+    const handleSignInClick = () => {
+        console.log(usernameRef.current?.value)
+        console.log(passwordRef.current?.value)
+    }
+
     return (
         <div className={classes.root}>
             <Grid
@@ -14,26 +24,16 @@ const Login: React.FC = () => {
                 className={classes.grid}
             >
                 <Grid item>
-                    <LoginForm className={classes.loginForm} />
+                    <LoginForm
+                        className={classes.loginForm}
+                        usernameRef={usernameRef}
+                        passwordRef={passwordRef}
+                        onSignInClick={handleSignInClick}
+                    />
                 </Grid>
             </Grid>
         </div>
     );
 }
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            height: '100vh',
-        },
-        grid: {
-            height: 'inherit'
-        },
-        loginForm: {
-            marginLeft: theme.spacing(3),
-            marginRight: theme.spacing(3),
-        }
-    })
-);
 
 export default Login;
