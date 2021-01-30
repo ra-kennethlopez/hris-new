@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             height: '100vh',
-            backgroundColor: theme.palette.grey[100]
         },
         grid: {
             height: 'inherit'

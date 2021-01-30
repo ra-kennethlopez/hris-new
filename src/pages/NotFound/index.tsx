@@ -24,7 +24,7 @@ const NotFound: React.FC = () => {
                         <Typography className={classes.subHeading} variant='h3'>Page not found</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography className={classes.body} variant='body1'>The page you arr looking for doesn't exist or an other error occurred.</Typography>
+                    <Typography className={classes.body} variant='body1'>The page you are looking for doesn't exist or an other error occurred.</Typography>
                 </Grid>
             </Grid>
         </div>
@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             height: '100vh',
-            backgroundColor: theme.palette.grey[100]
         },
         grid: {
             height: 'inherit'

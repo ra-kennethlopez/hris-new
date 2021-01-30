@@ -1,5 +1,5 @@
 import {createMuiTheme} from "@material-ui/core/styles";
-import {green, lightBlue} from "@material-ui/core/colors";
+import {green, grey, lightBlue} from "@material-ui/core/colors";
 
 const primaryLight = lightBlue[400];
 const primaryMain = lightBlue[600];
@@ -21,13 +21,16 @@ export default createMuiTheme({
             light: secondaryLight,
             dark: secondaryDark
         },
+        background: {
+            default: grey[100],
+        }
     },
     overrides: {
         MuiLink: {
             root: {
-                '&:hover:not($disabled):not($focused):not($error)': {
+                '&:hover': {
                     color: secondaryDark
-                }
+                },
             }
         },
         MuiOutlinedInput: {
