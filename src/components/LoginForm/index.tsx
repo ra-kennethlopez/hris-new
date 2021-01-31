@@ -30,7 +30,10 @@ const LoginForm: React.FC<Props> = (props) => {
             <Paper elevation={3}>
                 <Grid container>
                     <Grid item md={6}>
-                        <Box className={classes.leftCoverImgContainer} display={{xs: 'none', sm: 'none', md: 'block'}}>
+                        <Box
+                            className={classes.leftCoverImgContainer}
+                            display={{xs: 'none', sm: 'none', md: 'block'}}
+                        >
                             <img
                                 className={classes.leftCoverImg}
                                 src={leftImgSrc ? leftImgSrc : 'http://clients.rightapps.tech/cotabato/images/acc.png'}

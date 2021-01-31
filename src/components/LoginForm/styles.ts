@@ -21,7 +21,8 @@ export const useStyles = makeStyles(() =>
             display: 'block',
             marginLeft: 'auto',
             marginRight: 'auto',
-            maxWidth: '100%'
+            width: 280,
+            height: 280,
         },
         textField: {
             width: '100%'
