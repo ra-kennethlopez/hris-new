@@ -11,5 +11,6 @@ export type Props = {
   passwordDefaultValue?: string;
   usernameError?: string;
   passwordError?: string;
+  formError?: string;
   onSignInClick?: () => void;
 };

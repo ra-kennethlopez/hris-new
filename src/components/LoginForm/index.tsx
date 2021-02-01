@@ -20,6 +20,7 @@ const LoginForm: React.FC<Props> = (props) => {
         passwordDefaultValue,
         usernameError,
         passwordError,
+        formError,
         onSignInClick,
     } = props;
 
@@ -86,6 +87,9 @@ const LoginForm: React.FC<Props> = (props) => {
                                                 />
                                                 <Typography color='error'>{passwordError}</Typography>
                                             </Grid>
+                                        </Grid>
+                                        <Grid item md>
+                                            <Typography color='error'>{formError}</Typography>
                                         </Grid>
                                         <Grid item md container direction='column'>
                                             <Grid item md>
