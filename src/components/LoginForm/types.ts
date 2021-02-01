@@ -9,5 +9,7 @@ export type Props = {
   passwordRef?: React.RefObject<TextFieldProps>;
   usernameDefaultValue?: string;
   passwordDefaultValue?: string;
+  usernameError?: string;
+  passwordError?: string;
   onSignInClick?: () => void;
 };

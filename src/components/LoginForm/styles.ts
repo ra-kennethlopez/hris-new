@@ -12,7 +12,8 @@ export const useStyles = makeStyles(() =>
         leftCoverImg: {
             display: 'block',
             width: '100%',
-            height: '100%'
+            height: '100%',
+            minWidth: 456
         },
         form: {
             width: '100%'

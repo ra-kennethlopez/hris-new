@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme: Theme) =>
         loginForm: {
             marginLeft: theme.spacing(3),
             marginRight: theme.spacing(3),
-            width: 1170
         }
     })
 );

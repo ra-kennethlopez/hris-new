@@ -18,6 +18,8 @@ const LoginForm: React.FC<Props> = (props) => {
         passwordRef,
         usernameDefaultValue,
         passwordDefaultValue,
+        usernameError,
+        passwordError,
         onSignInClick,
     } = props;
 
@@ -70,6 +72,7 @@ const LoginForm: React.FC<Props> = (props) => {
                                                     label='Username'
                                                     variant='outlined'
                                                 />
+                                                <Typography color='error'>{usernameError}</Typography>
                                             </Grid>
                                             <Grid item md={6} sm={6} xs={12}>
                                                 <TextField
@@ -81,6 +84,7 @@ const LoginForm: React.FC<Props> = (props) => {
                                                     variant='outlined'
                                                     type='password'
                                                 />
+                                                <Typography color='error'>{passwordError}</Typography>
                                             </Grid>
                                         </Grid>
                                         <Grid item md container direction='column'>
