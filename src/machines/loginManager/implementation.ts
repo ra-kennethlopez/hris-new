@@ -8,7 +8,7 @@ const implementation: MachineOptions<LoginManagerContext, any> = {
         spawnLoginMachine: assign({
             loginRef: (_) => spawn<LoginContext, LoginEvent>(loginMachine, 'login')
         }),
-        sendLoginEventToLoginMachine: send((_, event: LoginManagerEvent<LoginEventPayload>) => ({...event}), {to: 'login'}),
+        sendEventToLogin: send((_, event: LoginManagerEvent<LoginEventPayload>) => (event), {to: 'login'}),
     },
     services: {},
     guards: {

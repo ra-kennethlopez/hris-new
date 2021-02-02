@@ -20,7 +20,7 @@ const config: MachineConfig<LoginManagerContext, LoginManagerStateSchema, LoginM
                     on: {
                         'LOGIN': {
                             target: 'loading',
-                            actions: ['sendLoginEventToLoginMachine']
+                            actions: ['sendEventToLogin']
                         }
                     }
                 },
