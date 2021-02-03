@@ -1,4 +1,5 @@
-import {createMuiTheme} from "@material-ui/core/styles";
+// https://stackoverflow.com/a/64135466
+import {unstable_createMuiStrictModeTheme as createMuiTheme} from "@material-ui/core/styles";
 import {green, grey, lightBlue} from "@material-ui/core/colors";
 
 const primaryLight = lightBlue[400];
@@ -39,6 +40,6 @@ export default createMuiTheme({
                     borderColor: secondaryLight,
                 }
             }
-        },
+        }
     },
 })

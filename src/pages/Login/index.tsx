@@ -7,6 +7,7 @@ import { useMachine } from "@xstate/react";
 import loginManagerMachine from "../../machines/loginManager";
 import {LoginEvent, LoginEventPayload} from "../../machines/login/types";
 import {getValue} from "../../utils";
+import LoadingFull from "../../components/LoadingFull";
 
 const Login: React.FC = () => {
     const classes = useStyles();
@@ -18,6 +19,7 @@ const Login: React.FC = () => {
     const emptyUsername = loginState?.matches('error.emptyUsername');
     const emptyPassword = loginState?.matches('error.emptyPassword');
     const loginFail = loginState?.matches('error.fail');
+    const loading = loginState?.matches('loading');
     const errorMessage = loginState?.context.errorMessage;
 
     const handleSignInClick = () => {
@@ -34,7 +36,6 @@ const Login: React.FC = () => {
 
     console.log("login manager state: ", loginManagerState);
     console.log("login state: ", loginManagerState.context.loginRef?.state);
-    console.log(emptyUsername)
 
     return (
         <div className={classes.root}>
@@ -57,6 +58,7 @@ const Login: React.FC = () => {
                     />
                 </Grid>
             </Grid>
+            <LoadingFull show={!!loading} />
         </div>
     );
 }
