@@ -27,6 +27,7 @@ const LoginForm: React.FC<Props> = (props) => {
     const classes = useStyles();
     const propClass = className ? className : '';
     const rootClasses = classes.root + ' ' + propClass;
+    const hasErrorMessage = Boolean(formError || usernameError || passwordError);
 
     return (
         <div className={rootClasses}>
@@ -89,7 +90,7 @@ const LoginForm: React.FC<Props> = (props) => {
                                             </Grid>
                                         </Grid>
                                         <Grid item md>
-                                            <Typography color='error'>{formError}</Typography>
+                                            <Typography className={!hasErrorMessage ? classes.error: ''} color='error'>{formError}</Typography>
                                         </Grid>
                                         <Grid item md container direction='column'>
                                             <Grid item md>

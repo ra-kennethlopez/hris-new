@@ -33,6 +33,9 @@ export const useStyles = makeStyles(() =>
         },
         signInButton: {
             width: '100%'
+        },
+        error: {
+            minHeight: '1.5rem'
         }
     }),
 );
