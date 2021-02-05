@@ -4,29 +4,32 @@ import {LoginManagerContext, LoginManagerEvent, LoginManagerStateSchema} from ".
 const config: MachineConfig<LoginManagerContext, LoginManagerStateSchema, LoginManagerEvent> = {
     id: 'loginManager',
     type: 'parallel',
-    context: {
-        loginRef: undefined
-    },
     states: {
         login: {
             id: 'login',
             initial: 'idle',
             states: {
                 idle: {
-                    always: {
-                        actions: ['spawnLoginMachine'],
-                        cond: 'loginRefUndefined'
-                    },
                     on: {
-                        'LOGIN': {
-                            target: 'loading',
-                            actions: ['sendEventToLogin']
-                        }
+                        'LOGIN': [
+                            {
+                                target: 'loading',
+                                actions: ['spawnLoginMachine', 'sendEventToLogin'],
+                                cond: 'loginRefUndefined'
+                            },
+                            {
+                                target: 'loading',
+                                actions: ['sendEventToLogin']
+                            }
+                        ]
                     }
                 },
                 loading: {
                     on: {
-                        'LOGIN.SUCCESS': 'success',
+                        'LOGIN.SUCCESS': {
+                            target: 'success',
+                            actions: ['storeSessionId']
+                        },
                         'LOGIN.ERROR': 'idle'
                     }
                 },

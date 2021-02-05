@@ -1,6 +1,6 @@
 import {assign, MachineOptions, sendParent} from "xstate";
 import fakeApi from "../../api";
-import {LoginContext, LoginEvent, LoginEventPayload} from "./types";
+import {LoginContext, LoginEvent, LoginEventPayload, LoginResponseEvent} from "./types";
 
 const implementation: MachineOptions<LoginContext, any> = {
     actions: {
@@ -19,7 +19,10 @@ const implementation: MachineOptions<LoginContext, any> = {
         setErrorMessageLoginFail: assign({
             errorMessage: (_) => 'Failed to login, username or password is incorrect.'
         }),
-        sendParentSuccessEvent: sendParent('LOGIN.SUCCESS'),
+        sendParentSuccessEvent: sendParent((_, event: LoginResponseEvent) => ({
+            type: 'LOGIN.SUCCESS',
+            payload: event.data
+        })),
         sendParentErrorEvent: sendParent('LOGIN.ERROR'),
     },
     services: {

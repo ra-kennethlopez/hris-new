@@ -1,6 +1,6 @@
 import {LoginResponse} from "./types";
+import {v4 as uuid} from 'uuid';
 
-// noinspection JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 export const login = (username: string, password: string): Promise<LoginResponse> => {
     return new Promise<LoginResponse>((resolve, reject) => {
         setTimeout(() => {
@@ -8,30 +8,16 @@ export const login = (username: string, password: string): Promise<LoginResponse
                 status: {
                     success: true,
                     code: 1
-                }
+                },
+                sessionId: ''
             }
 
-            if (username === 'asd' && password === 'asd') {
+            if ((username === 'asd' && password === 'asd') || (username === 'admin' && password === 'adminrss')) {
+                response.sessionId = uuid();
                 resolve(response);
             } else {
                 reject(response)
             }
-        }, 1000);
-    });
-}
-
-// noinspection JSUnusedGlobalSymbols,JSUnusedLocalSymbols
-export const failLogin = (username: string, password: string): Promise<LoginResponse> => {
-    return new Promise<LoginResponse>((_, reject) => {
-        setTimeout(() => {
-            const response: LoginResponse = {
-                status: {
-                    success: false,
-                    code: 0
-                }
-            }
-
-            reject(response);
         }, 1000);
     });
 }

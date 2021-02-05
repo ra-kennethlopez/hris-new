@@ -30,12 +30,14 @@ const config: MachineConfig<LoginContext, LoginStateSchema, LoginEvent> = {
             ],
             invoke: {
                 src: 'login',
-                onDone: 'success',
+                onDone: {
+                    target: 'success',
+                    actions: ['sendParentSuccessEvent']
+                },
                 onError: 'error.fail'
             }
         },
         success: {
-            entry: ['sendParentSuccessEvent'],
             type: 'final'
         },
         error: {

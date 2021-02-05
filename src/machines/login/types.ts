@@ -1,4 +1,5 @@
 import {ActorRefFrom, StateMachine} from "xstate";
+import {LoginResponse} from "../../api/types";
 
 export interface LoginContext {
     username: string;
@@ -14,6 +15,11 @@ export type LoginEventPayload = {
 export type LoginEvent<T = Object> = {
     type: 'LOGIN';
     payload: T;
+}
+
+export type LoginResponseEvent = {
+    type: string;
+    data: LoginResponse;
 }
 
 export type LoginStateSchema = {
