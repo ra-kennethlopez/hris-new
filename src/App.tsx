@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  return (
+    return (
       <ThemeProvider theme={AppTheme}>
           <CssBaseline />
           <Router>
@@ -24,7 +24,7 @@ function App() {
               </Switch>
           </Router>
       </ThemeProvider>
-  );
+    );
 }
 
 export default App;
