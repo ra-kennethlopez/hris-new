@@ -1,8 +1,8 @@
 import {ThemeProvider} from '@material-ui/core/styles';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AppTheme} from './styles';
 import {CssBaseline} from "@material-ui/core";
-import {BrowserRouter as Router, Route, Switch, useHistory, useLocation} from 'react-router-dom'
+import {BrowserRouter as Router, matchPath, Route, Switch, useHistory, useLocation} from 'react-router-dom'
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import {isLoggedIn} from "./utils";
@@ -27,10 +27,18 @@ const PublicRoutes: React.FC = () => {
 const PrivateRoutes: React.FC = () => {
     const location = useLocation();
     const history = useHistory();
-    console.log('path: ', location.pathname)
-    if (location.pathname === '/login') {
-        history.replace('/');
-    }
+    useEffect(() => {
+        const match = matchPath(location.pathname, {
+            path: '/login',
+            exact: true,
+        });
+
+        if (match?.isExact) {
+            history.replace('/');
+        }
+
+    }, [history, location])
+
 
     return (
         <Switch>
@@ -45,11 +53,13 @@ const PrivateRoutes: React.FC = () => {
 }
 
 function App() {
+    const userLoggedIn = isLoggedIn();
+
     return (
       <ThemeProvider theme={AppTheme}>
           <CssBaseline />
           <Router>
-              {isLoggedIn() ? <PrivateRoutes /> : <PublicRoutes />}
+              {userLoggedIn ? <PrivateRoutes /> : <PublicRoutes />}
           </Router>
       </ThemeProvider>
     );

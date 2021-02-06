@@ -14,7 +14,6 @@ const Login: React.FC = () => {
     const classes = useStyles();
     const usernameRef = useRef<TextFieldProps>(null);
     const passwordRef = useRef<TextFieldProps>(null);
-    const history = useHistory();
 
     const [loginManagerState, loginManagerSend] = useMachine(loginManagerMachine);
     const loginState = loginManagerState.context.loginRef?.state;
@@ -22,7 +21,6 @@ const Login: React.FC = () => {
     const emptyPassword = loginState?.matches('error.emptyPassword');
     const loginFail = loginState?.matches('error.fail');
     const loading = loginState?.matches('loading');
-    const loginSuccess = loginState?.matches('success');
     const errorMessage = loginState?.context.errorMessage;
 
     const handleSignInClick = () => {
@@ -37,16 +35,17 @@ const Login: React.FC = () => {
         loginManagerSend(event);
     }
 
+    const history = useHistory();
+    const loginSuccess = loginState?.matches('success');
     useEffect(() => {
         if (loginSuccess) {
             history.replace('/');
             window.location.reload();
         }
-    }, [loginSuccess]);
+    }, [loginSuccess, history]);
 
     console.log("login manager state: ", loginManagerState);
     console.log("login state: ", loginManagerState.context.loginRef?.state);
-    console.log(loginSuccess);
 
     return (
         <div className={classes.root}>
