@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {BaseSyntheticEvent, useEffect, useRef} from "react";
 import {useStyles} from "./styles";
 import Grid from "@material-ui/core/Grid";
 import { TextFieldProps } from "@material-ui/core/TextField";
@@ -23,7 +23,9 @@ const Login: React.FC = () => {
     const loading = loginState?.matches('loading');
     const errorMessage = loginState?.context.errorMessage;
 
-    const handleSignInClick = () => {
+    const handleSignInClick = (e: BaseSyntheticEvent) => {
+        e.preventDefault();
+
         const event: LoginEvent<LoginEventPayload> = {
             type: 'LOGIN',
             payload: {

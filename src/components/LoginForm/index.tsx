@@ -26,7 +26,7 @@ const LoginForm: React.FC<Props> = (props) => {
 
     const classes = useStyles();
     const propClass = className ? className : '';
-    const rootClasses = classes.root + ' ' + propClass;
+    const rootClasses = `${classes.root} ${propClass}`;
     const hasErrorMessage = Boolean(formError || usernameError || passwordError);
 
     return (
@@ -64,54 +64,57 @@ const LoginForm: React.FC<Props> = (props) => {
                                 </Grid>
                                 <Grid item md>
                                     <Box m={3}>
-                                        <Grid item container direction='row' spacing={2}>
-                                            <Grid item md={6} sm={6} xs={12}>
-                                                <TextField
-                                                    inputRef={usernameRef}
-                                                    className={classes.textField}
-                                                    defaultValue={usernameDefaultValue ? usernameDefaultValue : ''}
-                                                    id='username'
-                                                    label='Username'
-                                                    variant='outlined'
-                                                />
-                                                <Typography color='error'>{usernameError}</Typography>
-                                            </Grid>
-                                            <Grid item md={6} sm={6} xs={12}>
-                                                <TextField
-                                                    inputRef={passwordRef}
-                                                    className={classes.textField}
-                                                    defaultValue={passwordDefaultValue ? passwordDefaultValue : ''}
-                                                    id='password'
-                                                    label='Password'
-                                                    variant='outlined'
-                                                    type='password'
-                                                />
-                                                <Typography color='error'>{passwordError}</Typography>
-                                            </Grid>
-                                        </Grid>
-                                        <Grid item md>
-                                            <Typography className={!hasErrorMessage ? classes.error: ''} color='error'>{formError}</Typography>
-                                        </Grid>
-                                        <Grid item md container direction='column'>
-                                            <Grid item md>
-                                                <Box my={3}>
-                                                    <Button
-                                                        className={classes.signInButton}
-                                                        variant='contained'
-                                                        color='primary'
-                                                        onClick={onSignInClick}
-                                                    >
-                                                        Sign in
-                                                    </Button>
-                                                </Box>
+                                        <form onSubmit={onSignInClick}>
+                                            <Grid item container direction='row' spacing={2}>
+                                                <Grid item md={6} sm={6} xs={12}>
+                                                    <TextField
+                                                        inputRef={usernameRef}
+                                                        className={classes.textField}
+                                                        defaultValue={usernameDefaultValue ? usernameDefaultValue : ''}
+                                                        id='username'
+                                                        label='Username'
+                                                        variant='outlined'
+                                                    />
+                                                    <Typography color='error'>{usernameError}</Typography>
+                                                </Grid>
+                                                <Grid item md={6} sm={6} xs={12}>
+                                                    <TextField
+                                                        inputRef={passwordRef}
+                                                        className={classes.textField}
+                                                        defaultValue={passwordDefaultValue ? passwordDefaultValue : ''}
+                                                        id='password'
+                                                        label='Password'
+                                                        variant='outlined'
+                                                        type='password'
+                                                    />
+                                                    <Typography color='error'>{passwordError}</Typography>
+                                                </Grid>
                                             </Grid>
                                             <Grid item md>
-                                                <Typography className={classes.centerText} variant='body2'>
-                                                    Forgot {' '}
-                                                    <Link underline='none' href='#' color='secondary'>Username / Password</Link>
-                                                </Typography>
+                                                <Typography className={!hasErrorMessage ? classes.error: ''} color='error'>{formError}</Typography>
                                             </Grid>
-                                        </Grid>
+                                            <Grid item md container direction='column'>
+                                                <Grid item md>
+                                                    <Box my={3}>
+                                                        <Button
+                                                            className={classes.signInButton}
+                                                            type='submit'
+                                                            variant='contained'
+                                                            color='primary'
+                                                            onClick={onSignInClick}
+                                                        >
+                                                            Sign in
+                                                        </Button>
+                                                    </Box>
+                                                </Grid>
+                                                <Grid item md>
+                                                    <Typography className={classes.centerText} variant='body2'>
+                                                        Forgot {' '}
+                                                        <Link underline='none' href='#' color='secondary'>Username / Password</Link>
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
+                                        </form>
                                     </Box>
                                 </Grid>
                             </Grid>

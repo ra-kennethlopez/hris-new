@@ -1,4 +1,4 @@
-import React from "react";
+import React, {BaseSyntheticEvent} from "react";
 import { TextFieldProps } from "@material-ui/core/TextField";
 
 export type Props = {
@@ -12,5 +12,5 @@ export type Props = {
   usernameError?: string;
   passwordError?: string;
   formError?: string;
-  onSignInClick?: () => void;
+  onSignInClick?: (e: BaseSyntheticEvent) => void;
 };
