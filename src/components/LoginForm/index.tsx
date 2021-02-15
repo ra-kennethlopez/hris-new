@@ -21,7 +21,7 @@ const LoginForm: React.FC<Props> = (props) => {
         usernameError,
         passwordError,
         formError,
-        onSignInClick,
+        onSubmit,
     } = props;
 
     const classes = useStyles();
@@ -64,7 +64,7 @@ const LoginForm: React.FC<Props> = (props) => {
                                 </Grid>
                                 <Grid item md>
                                     <Box m={3}>
-                                        <form onSubmit={onSignInClick}>
+                                        <form onSubmit={onSubmit}>
                                             <Grid item container direction='row' spacing={2}>
                                                 <Grid item md={6} sm={6} xs={12}>
                                                     <TextField
@@ -101,7 +101,7 @@ const LoginForm: React.FC<Props> = (props) => {
                                                             type='submit'
                                                             variant='contained'
                                                             color='primary'
-                                                            onClick={onSignInClick}
+                                                            onClick={onSubmit}
                                                         >
                                                             Sign in
                                                         </Button>

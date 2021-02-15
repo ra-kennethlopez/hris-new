@@ -12,5 +12,5 @@ export type Props = {
   usernameError?: string;
   passwordError?: string;
   formError?: string;
-  onSignInClick?: (e: BaseSyntheticEvent) => void;
+  onSubmit?: (e: BaseSyntheticEvent) => void;
 };

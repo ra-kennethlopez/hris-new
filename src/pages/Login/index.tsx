@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     const loading = loginState?.matches('loading');
     const errorMessage = loginState?.context.errorMessage;
 
-    const handleSignInClick = (e: BaseSyntheticEvent) => {
+    const handleSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
         const event: LoginEvent<LoginEventPayload> = {
@@ -66,7 +66,7 @@ const Login: React.FC = () => {
                         usernameError={emptyUsername ? errorMessage : ''}
                         passwordError={emptyPassword ? errorMessage : ''}
                         formError={loginFail ? errorMessage : ''}
-                        onSignInClick={handleSignInClick}
+                        onSubmit={handleSubmit}
                     />
                 </Grid>
             </Grid>
