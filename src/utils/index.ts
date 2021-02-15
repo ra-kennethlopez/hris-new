@@ -6,6 +6,6 @@ export const getValue = (ref: React.RefObject<TextFieldProps>):string => {
     return ref.current ? String(ref.current.value) : '';
 }
 
-export const isLoggedIn = ():Boolean => {
+export const isLoggedIn = ():boolean => {
     return Boolean(store.get('SESSION_ID'));
 }

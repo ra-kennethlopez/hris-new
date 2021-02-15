@@ -42,7 +42,6 @@ const Login: React.FC = () => {
     useEffect(() => {
         if (loginSuccess) {
             history.replace('/');
-            window.location.reload();
         }
     }, [loginSuccess, history]);
 
